@@ -21,7 +21,7 @@ import { CommentsService } from './comments/comments.service';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'postgres',
+      type: environments.dbType == 'mysql' ? 'mysql' : 'postgres',
       host: environments.dbHost,
       port: environments.dbPort,
       username: environments.dbUser,

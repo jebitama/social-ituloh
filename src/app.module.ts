@@ -29,7 +29,7 @@ import { JwtAuthGuard } from './features/auth/guard/jwt-auth.guard';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: async () => ({
-        type: 'postgres',
+        type: environments.dbType == 'mysql' ? 'mysql' : 'postgres',
         host: environments.dbHost,
         port: environments.dbPort,
         username: environments.dbUser,

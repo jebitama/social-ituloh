@@ -6,6 +6,7 @@ const env = process.env;
 export const environments = {
   port: Number(env.PORT || 3000),
   proxyEnabled: env.PROXY_ENABLED === 'true',
+  dbType: env.DB_TYPE,
   dbPort: Number(env.DB_PORT || 5432),
   dbHost: env.DB_HOST,
   dbUser: env.DB_USERNAME,
