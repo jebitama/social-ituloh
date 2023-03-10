@@ -43,7 +43,7 @@ export class Comment extends BaseEntity {
   author: User;
 
   @TreeParent()
-  parentComment: Comment;
+  parentComment?: Comment;
   @TreeChildren()
-  replies: Comment[];
+  replies?: Comment[];
 }

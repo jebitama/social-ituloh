@@ -34,7 +34,7 @@ export class UsersController {
     return await this.userServices.getAll(search, req.user.id);
   }
 
-  @Get('self')
+  @Get('me')
   async getSelf(@Request() req): Promise<User> {
     return await this.userServices.getByID(req.user.id);
   }
