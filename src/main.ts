@@ -1,8 +1,29 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Logger, VersioningType } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
+import { NestExpressApplication } from '@nestjs/platform-express';
 import { AppModule } from './app.module';
+import { environments } from './environtments/environtments';
+import * as cookieParser from 'cookie-parser';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  await app.listen(3000);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  app.enableCors();
+  app.enableShutdownHooks();
+  app.set('trust proxy', environments.proxyEnabled);
+  app.use(cookieParser());
+
+  const port = environments.port;
+  const logger = new Logger('NestApplication');
+
+  // versioning
+  // app.enableVersioning({
+  //   type: VersioningType.URI,
+  //   prefix:'v1'
+  // });
+
+  await app.listen(port, () =>
+    logger.log(`Server initialized on port ${port}`),
+  );
 }
 bootstrap();

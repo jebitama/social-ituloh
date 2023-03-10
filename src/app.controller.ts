@@ -1,12 +1,26 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Controller, Get, Req } from '@nestjs/common';
+import { Request } from 'express';
+import { hostname } from 'os';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
-
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  main(@Req() req: Request) {
+    return this.getContainer(req);
+  }
+
+  @Get('test')
+  test(@Req() req: Request) {
+    return this.getContainer(req);
+  }
+
+  private getContainer(req: Request) {
+    return {
+      ip: req.ip,
+      forwardedFor: req.headers['x-forwarded-for'],
+      realIp: req.headers['x-real-ip'],
+      container: hostname(),
+    };
   }
 }
