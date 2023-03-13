@@ -24,7 +24,7 @@ import { Comment } from '../comments/entities/comment.entity';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { FilesService } from '../files/files.service';
 
-@Controller('posts')
+@Controller('v1/posts')
 export class PostsController {
   constructor(
     private readonly postsService: PostsService,

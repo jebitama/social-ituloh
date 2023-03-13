@@ -18,7 +18,7 @@ import {
 } from '../users/entities/user.entity';
 
 @Public()
-@Controller('auth')
+@Controller('v1/auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
@@ -35,7 +35,7 @@ export class AuthController {
     return await this.authService.login(user);
   }
 
-  @Post('update-tokens')
+  @Post('refresh_token')
   async updateTokens(
     @Body() payload: UserUpdateTokensDto,
   ): Promise<UserTokensInterface> {

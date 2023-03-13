@@ -5,7 +5,7 @@ import { CreateCommentDto } from './dto/create-comment.dto';
 import { Comment } from './entities/comment.entity';
 import { Request } from '@nestjs/common';
 
-@Controller('comments')
+@Controller('v1/comments')
 export class CommentsController {
   constructor(private readonly commentsService: CommentsService) {}
 

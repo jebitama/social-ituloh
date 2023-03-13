@@ -3,7 +3,7 @@ import { Controller, Get, Req } from '@nestjs/common';
 import { Request } from 'express';
 import { hostname } from 'os';
 
-@Controller()
+@Controller('v1')
 export class AppController {
   @Get()
   main(@Req() req: Request) {

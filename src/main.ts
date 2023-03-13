@@ -12,15 +12,10 @@ async function bootstrap() {
   app.enableShutdownHooks();
   app.set('trust proxy', environments.proxyEnabled);
   app.use(cookieParser());
+  app.setGlobalPrefix('api');
 
   const port = environments.port;
   const logger = new Logger('NestApplication');
-
-  // versioning
-  // app.enableVersioning({
-  //   type: VersioningType.URI,
-  //   prefix:'v1'
-  // });
 
   await app.listen(port, () =>
     logger.log(`Server initialized on port ${port}`),

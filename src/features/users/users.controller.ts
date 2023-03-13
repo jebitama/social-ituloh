@@ -22,7 +22,7 @@ import { User } from './entities/user.entity';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
 
-@Controller('user')
+@Controller('v1/users')
 export class UsersController {
   constructor(private readonly userServices: UsersService) {}
 
